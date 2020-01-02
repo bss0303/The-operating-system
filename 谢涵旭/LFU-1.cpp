@@ -2,12 +2,12 @@
 #include<stack>
 using namespace std;
 
-int visit_time[100] = { 0 };											   //访问次数
-//int TLB[3] = { 1,4,9 };												   //快表
-int a[] = { 3,4,1,2,5,7,2,5,7,8,9,3,4,4,6,2,2,6,6,4,3,4,1,2,5,7,2,5,7,8 }; //默认访问序列
-int aLength = 30;														   //默认访问序列大小	
-int memSize = 3;														   //默认内存页表大小
-int mem[10] = { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1};							   //内存页表
+int visit_time[100] = { 0 };											   //璁块棶娆℃暟
+//int TLB[3] = { 1,4,9 };												   //蹇〃
+int a[30] = { 3,4,1,2,5,7,2,5,7,8,9,3,4,4,6,2,2,6,6,4}; //榛樿璁块棶搴忓垪
+int aLength = 30;														   //榛樿璁块棶搴忓垪澶у皬	
+int memSize = 3;														   //榛樿鍐呭瓨椤佃〃澶у皬
+int mem[10] = { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1};							   //鍐呭瓨椤佃〃
 void LFU(int arr[]);
 int main()
 {
@@ -24,13 +24,13 @@ void LFU(int arr[])
 		int visit = arr[i];
 		for (int j = 0; j <memSize; j++)
 		{
-			if (mem[j] == visit)//是否已经在页表中
+			if (mem[j] == visit)//鏄惁宸茬粡鍦ㄩ〉琛ㄤ腑
 			{
 				visit_time[visit]++;
 				flag = true;
 				break;
 			}
-			else//更新最少频率访问的页面位置
+			else//鏇存柊鏈�灏戦鐜囪闂殑椤甸潰浣嶇疆
 				if (time >visit_time[mem[j]])
 				{
 					time = visit_time[mem[j]];
@@ -44,7 +44,7 @@ void LFU(int arr[])
 			visit_time[visit]++;
 		}
 
-		//打印
+		//鎵撳嵃
 		cout << visit << ":";
 		for (int i = 0; i < memSize; i++)
 			cout << mem[i] << " ";
