@@ -23,27 +23,27 @@ void LFU(int arr[])
 	int location = -1;
 	for (int i = 0; i < 20; i++)
 	{
-		//cout <<"Ò³    ºÅ£º"<< 1 << " " << 2 << " " << 3 << " " << 4 << " " << 5 << " " << 6 << " " << 7 << " " << 8 << " " << 9 << endl;
-		//cout <<"·ÃÎÊ´ÎÊý£º"<< visit_time[1] << " "<< visit_time[2] << " "<< visit_time[3] << " "<< visit_time[4] <<" " << visit_time[5] << " " << visit_time[6] << " " << visit_time[7] << " " << visit_time[8] << " " << visit_time[9] << endl;
-		//cout << "¿ì	  ±í£º" << TLB[0] << " " << TLB[1] << " " << TLB[2] << endl;
+		//cout <<"é¡µ    å·ï¼š"<< 1 << " " << 2 << " " << 3 << " " << 4 << " " << 5 << " " << 6 << " " << 7 << " " << 8 << " " << 9 << endl;
+		//cout <<"è®¿é—®æ¬¡æ•°ï¼š"<< visit_time[1] << " "<< visit_time[2] << " "<< visit_time[3] << " "<< visit_time[4] <<" " << visit_time[5] << " " << visit_time[6] << " " << visit_time[7] << " " << visit_time[8] << " " << visit_time[9] << endl;
+		//cout << "å¿«	  è¡¨ï¼š" << TLB[0] << " " << TLB[1] << " " << TLB[2] << endl;
 		int visit = arr[i];
 		for (int j = 0; j <3; j++)
 		{
-			if (TLB[j] == visit)//ÊÇ·ñÒÑ¾­ÔÚÒ³±íÖÐ
+			if (TLB[j] == visit)//æ˜¯å¦å·²ç»åœ¨é¡µè¡¨ä¸­
 			{
 				visit_time[visit]++;
 				flag = true;
-				//cout << "¿ì±íÃüÖÐ" << endl;
+				//cout << "å¿«è¡¨å‘½ä¸­" << endl;
 				break;
 			}
-			else if (yebiao[j] == visit)//ÊÇ·ñÒÑ¾­ÔÚÒ³±íÖÐ
+			else if (yebiao[j] == visit)//æ˜¯å¦å·²ç»åœ¨é¡µè¡¨ä¸­
 			{
 				visit_time[visit]++;
 				flag = true;
-				//cout << "Ò³±íÃüÖÐ" << endl;
+				//cout << "é¡µè¡¨å‘½ä¸­" << endl;
 				break;
 			}
-			else//¸üÐÂ×îÉÙÆµÂÊ·ÃÎÊµÄÒ³ÃæÎ»ÖÃ
+			else//æ›´æ–°æœ€å°‘é¢‘çŽ‡è®¿é—®çš„é¡µé¢ä½ç½®
 				if (time >visit_time[yebiao[j]])
 				{
 					//cout << time << " " << visit_time[yebiao[j]] << " ";
@@ -53,7 +53,7 @@ void LFU(int arr[])
 		}
 		if (!flag)
 		{
-			//cout << "Ò³±íÎ´ÃüÖÐ" << endl;
+			//cout << "é¡µè¡¨æœªå‘½ä¸­" << endl;
 			yebiao[location] = visit;
 			TLB[location] = visit;
 			visit_time[visit]++;
