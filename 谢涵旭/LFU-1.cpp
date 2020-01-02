@@ -5,7 +5,7 @@ using namespace std;
 int visit_time[100] = { 0 };											   //访问次数
 //int TLB[3] = { 1,4,9 };												   //快表
 int a[30] = { 3,4,1,2,5,7,2,5,7,8,9,3,4,4,6,2,2,6,6,4}; //默认访问序列
-int aLength = 30;														   //默认访问序列大小	
+int aLength = 20;														   //默认访问序列大小	
 int memSize = 3;														   //默认内存页表大小
 int mem[10] = { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1};							   //内存页表
 void LFU(int arr[]);
