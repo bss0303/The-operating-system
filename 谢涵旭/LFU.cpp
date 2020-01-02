@@ -2,65 +2,52 @@
 #include<stack>
 using namespace std;
 
-int visit_time[100] = { 0 };
-int yebiao[3] = { 1,4,9 };
-int TLB[3] = { 1,4,9 };
+int visit_time[100] = { 0 };											   //·ÃÎÊ´ÎÊı
+//int TLB[3] = { 1,4,9 };												   //¿ì±í
+int a[] = { 3,4,1,2,5,7,2,5,7,8,9,3,4,4,6,2,2,6,6,4,3,4,1,2,5,7,2,5,7,8 }; //Ä¬ÈÏ·ÃÎÊĞòÁĞ
+int aLength = 30;														   //Ä¬ÈÏ·ÃÎÊĞòÁĞ´óĞ¡	
+int memSize = 3;														   //Ä¬ÈÏÄÚ´æÒ³±í´óĞ¡
+int mem[10] = { -1 };															   //ÄÚ´æÒ³±í
 void LFU(int arr[]);
 int main()
 {
-	int arr[] = { 3,4,1,2,5,7,2,5,7,8,9,3,4,4,6,2,2,6,6,4 };
-	//int arr[] = {1,2,3 };
-	visit_time[1]++;
-	visit_time[4]++;
-	visit_time[9]++;
-	LFU(arr);
+	LFU(a);
 	system("pause");
 }
 void LFU(int arr[])
 {
-	bool flag = false;
-	int time = 100;
-	int location = -1;
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < aLength; i++)
 	{
-		//cout <<"é¡µ    å·ï¼š"<< 1 << " " << 2 << " " << 3 << " " << 4 << " " << 5 << " " << 6 << " " << 7 << " " << 8 << " " << 9 << endl;
-		//cout <<"è®¿é—®æ¬¡æ•°ï¼š"<< visit_time[1] << " "<< visit_time[2] << " "<< visit_time[3] << " "<< visit_time[4] <<" " << visit_time[5] << " " << visit_time[6] << " " << visit_time[7] << " " << visit_time[8] << " " << visit_time[9] << endl;
-		//cout << "å¿«	  è¡¨ï¼š" << TLB[0] << " " << TLB[1] << " " << TLB[2] << endl;
+		bool flag = false;
+		int time = 100;
+		int location = -1;
 		int visit = arr[i];
-		for (int j = 0; j <3; j++)
+		for (int j = 0; j <memSize; j++)
 		{
-			if (TLB[j] == visit)//æ˜¯å¦å·²ç»åœ¨é¡µè¡¨ä¸­
+			if (mem[j] == visit)//ÊÇ·ñÒÑ¾­ÔÚÒ³±íÖĞ
 			{
 				visit_time[visit]++;
 				flag = true;
-				//cout << "å¿«è¡¨å‘½ä¸­" << endl;
 				break;
 			}
-			else if (yebiao[j] == visit)//æ˜¯å¦å·²ç»åœ¨é¡µè¡¨ä¸­
-			{
-				visit_time[visit]++;
-				flag = true;
-				//cout << "é¡µè¡¨å‘½ä¸­" << endl;
-				break;
-			}
-			else//æ›´æ–°æœ€å°‘é¢‘ç‡è®¿é—®çš„é¡µé¢ä½ç½®
-				if (time >visit_time[yebiao[j]])
+			else//¸üĞÂ×îÉÙÆµÂÊ·ÃÎÊµÄÒ³ÃæÎ»ÖÃ
+				if (time >visit_time[mem[j]])
 				{
-					//cout << time << " " << visit_time[yebiao[j]] << " ";
-					time = visit_time[yebiao[j]];
+					time = visit_time[mem[j]];
 					location = j;
 				}
 		}
 		if (!flag)
 		{
-			//cout << "é¡µè¡¨æœªå‘½ä¸­" << endl;
-			yebiao[location] = visit;
-			TLB[location] = visit;
+			mem[location] = visit;
+			//TLB[location] = visit;
 			visit_time[visit]++;
 		}
-		cout << visit << ":" << yebiao[0] << " " << yebiao[1] << " " << yebiao[2] << endl;
-		flag = false;
-		time = 100;
-		location = -1;
+
+		//´òÓ¡
+		cout << visit << ":";
+		for (int i = 0; i < memSize; i++)
+			cout << mem[i] << " ";
+		cout << endl;
 	}
 }
