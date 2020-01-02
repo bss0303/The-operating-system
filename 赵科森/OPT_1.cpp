@@ -3,14 +3,14 @@
 #include<algorithm>
 using namespace std;
 
-int a[30]={7,0,2,1,5,3,5,1,3,2,1,2,1,1,1,2,3,4,1,1};//·ÃÎÊĞòÁĞ 
+int a[30]={7,0,2,1,5,3,5,1,3,2,1,2,1,1,1,2,3,4,1,1};//è®¿é—®åºåˆ— 
 int aLength=20;
 
-map<int, int> mp;												//OPT¼ÆÊıÊ¹ÓÃ 
+map<int, int> mp;												//OPTè®¡æ•°ä½¿ç”¨ 
 
-int mem[10]={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}, memSize=3;							//ÄÚ´æ 
+int mem[10]={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}, memSize=3;							//å†…å­˜ 
 
-int ff(){													/*Ñ°ÕÒÄÚ´æÖĞÒªÖÃ»»³öµÄÒ³*/
+int ff(){													/*å¯»æ‰¾å†…å­˜ä¸­è¦ç½®æ¢å‡ºçš„é¡µ*/
 	int minkey=mp[mem[0]], l=0;
 	for(int i=1; i<memSize; i++){
 		if(minkey > mp[mem[i]]){
@@ -22,14 +22,14 @@ int ff(){													/*Ñ°ÕÒÄÚ´æÖĞÒªÖÃ»»³öµÄÒ³*/
 }
 
 int main(){
-	int cnt = 0;//ÄÚ´æ±»Õ¼ÓÃ¸öÊı 
-	for(int i=0; i<aLength; i++){//Ô¤´¦Àí×Öµä£¬Í³¼Æ¸öÊı 
+	int cnt = 0;//å†…å­˜è¢«å ç”¨ä¸ªæ•° 
+	for(int i=0; i<aLength; i++){//é¢„å¤„ç†å­—å…¸ï¼Œç»Ÿè®¡ä¸ªæ•° 
 		int &tmpi = a[i];
 		mp[tmpi]++;
 	}
 	
 	for(int i=0; i<aLength; i++){
-		if(find(mem,mem+cnt, a[i]) == mem+cnt){//Èç¹û·¢ÉúÈ±Ò³ 
+		if(find(mem,mem+cnt, a[i]) == mem+cnt){//å¦‚æœå‘ç”Ÿç¼ºé¡µ 
 			if(cnt<memSize){
 				mem[cnt++] = a[i];
 			}else{
@@ -38,10 +38,10 @@ int main(){
 			}
 		}
 		mp[a[i]]--;
-		
+	
 		printf("%d: ", a[i]);
-		for(int i=0; i<memSize; i++){
-			if(i<cnt) printf("%d", mem[i]);
+		for(int j=0; j<memSize; j++){
+			if(j<cnt) printf("%d", mem[j]);
 			else printf(" ");
 			printf(" ");
 		}
