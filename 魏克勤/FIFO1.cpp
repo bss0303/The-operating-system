@@ -11,9 +11,8 @@ int a[30]={7,0,2,1,5,3,5,1,3,2,1,2,1,1,1,2,3,4,1,1};
 int aLength=20;
 int mem[10]={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},memSize=3;								
 
-int main()
+void FIFO()
 {
-	
 	int mem[3];//内存页面
 	int menSize=3;//内存页面大小
 	int loc=0;//每次页面替换的位置
@@ -26,7 +25,7 @@ int main()
 			if(a[i]==mem[j])
 			{
 				cout<<endl;
-				break;
+			    break;
 			}
 		}
 		if(j==menSize)
@@ -42,9 +41,14 @@ int main()
 			}
 			cout<<endl;
 		}
-		if(loc>2)
+		if(loc==memSize)
 			loc=0;
 	}
 	cout<<"缺页中断的次数为："<<count<<endl;
+}
+int main()
+{
+	FIFO();
+	return 0;
 }
    
