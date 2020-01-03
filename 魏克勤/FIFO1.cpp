@@ -33,7 +33,7 @@ void fifo()
 			mem[loc]=a[i];
 		    loc++;
 			count++;
-			for(j=0;j<memSize;j++)//打印页面序列
+			for(j=0;j<memSize;j++)//打印内存页面序列
 			{
 				if(mem[j]==-1)
 					cout<<" ";
