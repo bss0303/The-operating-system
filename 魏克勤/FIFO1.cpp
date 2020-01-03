@@ -11,7 +11,7 @@ int a[30]={7,0,2,1,5,3,5,1,3,2,1,2,1,1,1,2,3,4,1,1};
 int aLength=20;
 int mem[10]={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},memSize=3;								
 
-void FIFO()
+void fifo()
 {
 	int mem[3];//内存页面
 	int menSize=3;//内存页面大小
@@ -22,18 +22,18 @@ void FIFO()
 	{ 
 		for( j=0;j<menSize;j++)
 		{
-			if(a[i]==mem[j])
+			if(a[i]==mem[j])//访问的页面已在内存中
 			{
 				cout<<endl;
 			    break;
 			}
 		}
-		if(j==menSize)
+		if(j==menSize)//访问的页面不在内存中，发生页面置换
 		{
 			mem[loc]=a[i];
 		    loc++;
 			count++;
-			for(j=0;j<memSize;j++)
+			for(j=0;j<memSize;j++)//打印页面序列
 			{
 				if(mem[j]==-1)
 					cout<<" ";
@@ -48,7 +48,7 @@ void FIFO()
 }
 int main()
 {
-	FIFO();
+	fifo();
 	return 0;
 }
    
