@@ -1,19 +1,27 @@
-// FIFO1.cpp : �������̨Ӧ�ó������ڵ㡣
+﻿// FIFO1.cpp : 定义控制台应用程序的入口点。
 //
 
 #include "stdafx.h"
 #include<iostream>
 #include<string>
+
 using namespace std;
+
+int a[30]={7,0,2,1,5,3,5,1,3,2,1,2,1,1,1,2,3,4,1,1};
+int aLength=20;
+int mem[10]={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},memSize=3;								
+
 int main()
 {
-	int a[20]={1,3,4,2,0,3,0,4,2,3,0,3,2,1,2,0,1,5,6,7};
-	int mem[3];
-	int loc=0;
+	
+	int mem[3];//内存页面
+	int menSize=3;//内存页面大小
+	int loc=0;//每次页面替换的位置
+	int count=0;//记录缺页中断的次数
 	int i=0,j=0;
-	for( i=0;i<20;i++)
+	for( i=0;i<aLength;i++)
 	{ 
-		for( j=0;j<3;j++)
+		for( j=0;j<menSize;j++)
 		{
 			if(a[i]==mem[j])
 			{
@@ -21,25 +29,22 @@ int main()
 				break;
 			}
 		}
-		if(j==3)
+		if(j==menSize)
 		{
 			mem[loc]=a[i];
 		    loc++;
-		    if(i<3)
+			count++;
+			for(j=0;j<memSize;j++)
 			{
-				for(int m=0;m<=i;m++)
-					cout<<mem[m]<<" ";
-			    cout<<endl;
+				if(mem[j]==-1)
+					cout<<" ";
+				cout<<mem[j]<<" ";
 			}
-			else
-			{
-		    for(int k=0;k<3;k++)
-				cout<<mem[k]<<" ";
-		    cout<<endl;
-			}
+			cout<<endl;
 		}
 		if(loc>2)
 			loc=0;
 	}
-
+	cout<<"缺页中断的次数为："<<count<<endl;
 }
+   
